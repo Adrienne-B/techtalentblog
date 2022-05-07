@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<!-- We will create a template -->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Blog Site</title>
+		<th:block th:replace="/fragments/head"/>
+	</head>
+
+<!-- 9. Do the index template -->	
+	<body>
+		<div th:replace="/fragments/navbar::navbarx"></div>
+		<div class="container">
+			<h1>Welcome to Our Blog Post Site</h1>
+			<h3>Check out our blogs</h3>
+			<div class="row">
+				<!-- We want to display a list of all our blog posts.. -->
+				<!-- Our blogposts are stored in a thmeleafs variable called posts-->
+				<!-- We are going to create a div that represents how we are going-->
+				<!-- to display each blog post...and we are going to use th:each to repeat that div over and over again for each blogpost. -->
+			
+			
+			<!-- 17. -->	
+			<div th:each="blog:${posts}">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<p th:text="${blog.title}"/>
+						</div>
+						<div class="panel-body">
+							<p th:text="${blog.author}"/>
+							<p th:text="${blog.blogEntry"/>
+						</div>
+						<div class="panel-footer">
+							<a th:href="@{/blogpots/{id}(id=${blog.id))}">
+								<button class="btn btn-light">Edit Post</button>
+							</a>
+							<a th:href="@{/blogpots/delete/{id}(id=${blog.id))}">
+								<button class="btn btn-danger">Delete Post</button>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<p>Please use the form below to submit a Blog Post:</p>p>
+			<!-- If you surround a url with @{} in the thymeleaf expression, you let thymeleaf have a crack at URL-->
+		</div>
+		
+			<th:block th:replace="/fragments/endbody"/>
+		<!-- 14. -->
+	</body>
+</html>

@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<!-- We will create a template -->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Create a New Blog</title>
+		<th:block th:replace="/fragments/head"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	</head>
+	
+	
+	<body>
+		<div th:replace="/fragments/navbar::navbarx"></div>
+		<div class="container">
+			<h1>Edit Blog Post:</h1>
+				<form th:action="@{/blogposts/update/{id}(id=${blogPost.id})}" th:object="${blogPost}" method="post"> <!-- When this form is submitted, all the information in the form will be on the new web-page which will be uploaded using slash-->
+					<div class="form-group">
+					 <input type="text" class="form-control" th:field="*{title}" placeholder="Blog title..."/>
+					</div>
+					
+					<div class="form-group">
+						<input type="text" class="form-control" th:field="*{author}" placeholder="Adrienne Burney - Blog Author..."/>
+					 </div>
+					 
+					 
+					<div class="form-group">
+						<input type="text" th:field="*{blogEntry}"/>
+						<input type="text" class="form-control" th:field="*{blogEntry}" placeholder="Blog Entry..."/>
+					 </div>
+					<button class="btn bn-primary">Submit Your Post</button>
+				</form>
+			</div>
+		<th:block th:replace="/fragments/endbody"/>
+	</body>
+</html>
